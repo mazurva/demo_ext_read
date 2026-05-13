@@ -8,6 +8,7 @@ coverage/
 # Build and cache output
 dist/
 build/
+.vercel/
 .cache/
 .parcel-cache/
 .vite/
@@ -45,4 +46,3 @@ Desktop.ini
 .cursor/
 .opencode/
 .mcp.local.json
-

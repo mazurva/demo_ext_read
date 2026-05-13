@@ -6,6 +6,8 @@
 
 ## Демонстрация
 
+![Скриншот тренажера чтения и памяти](docs/screenshot.png)
+
 <video src="docs/video.mp4" controls width="100%" title="Демонстрация работы тренажера"></video>
 
 Если платформа просмотра README не показывает встроенное видео, откройте файл [docs/video.mp4](docs/video.mp4) напрямую.
@@ -70,16 +72,24 @@ npm.cmd test
 
 Проект можно опубликовать на Vercel как статический сайт. Сборка не требуется, потому что исходные файлы уже готовы к отдаче браузеру.
 
-Рекомендуемые настройки при импорте репозитория:
+В репозитории есть `vercel.json`, который фиксирует настройки деплоя:
 
 | Настройка | Значение |
 | --- | --- |
 | Framework Preset | `Other` |
-| Build Command | оставить пустым |
+| Build Command | отключен |
 | Output Directory | `.` |
 | Install Command | оставить авто или пустым |
 
-`server.js` используется только для локальной разработки. На Vercel приложение должно отдаваться как набор статических файлов из корня проекта: `index.html`, `styles/`, `src/` и `docs/video.mp4`.
+Для автодеплоя:
+
+1. Опубликуйте репозиторий на GitHub, GitLab или Bitbucket.
+2. В Vercel выберите `Add New Project` и импортируйте этот репозиторий.
+3. Проверьте, что Vercel видит `Framework Preset: Other`, `Build Command: None`, `Output Directory: .`.
+4. Нажмите `Deploy`.
+5. После подключения каждый push в основную ветку будет запускать production deployment, а pull request будет получать preview deployment.
+
+`server.js` используется только для локальной разработки. На Vercel приложение отдается как набор статических файлов из корня проекта: `index.html`, `styles/`, `src/`, `docs/screenshot.png` и `docs/video.mp4`.
 
 ## Структура проекта
 
