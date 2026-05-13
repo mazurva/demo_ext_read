@@ -1,0 +1,67 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f7f4;
+  --surface: #ffffff;
+  --surface-muted: #eef2ed;
+  --text: #17211b;
+  --muted: #647067;
+  --line: #d9dfd8;
+  --accent: #126b5a;
+  --accent-strong: #0b4d42;
+  --accent-soft: #d9f0ea;
+  --focus: #d24f2f;
+  --shadow: 0 12px 28px rgb(30 45 35 / 10%);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+select,
+input[type="number"],
+textarea {
+  border: 1px solid var(--line);
+}
+
+button {
+  min-height: 42px;
+  padding: 0 16px;
+  color: #ffffff;
+  cursor: pointer;
+  background: var(--accent);
+  border-radius: 6px;
+}
+
+button:hover {
+  background: var(--accent-strong);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--focus), transparent 30%);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
+}

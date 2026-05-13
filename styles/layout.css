@@ -1,0 +1,171 @@
+.app-shell {
+  width: min(1400px, 100%);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+body.has-demo-mode {
+  overflow: hidden;
+}
+
+.app-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.app-header h1 {
+  margin-bottom: 6px;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.app-header p {
+  max-width: 760px;
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(360px, 1.1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.input-panel,
+.training-panel {
+  min-width: 0;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.panel-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.panel-header h2 {
+  margin-bottom: 0;
+  font-size: 1.1rem;
+}
+
+.counter,
+.mode-badge {
+  flex: none;
+  padding: 4px 8px;
+  font-size: 0.86rem;
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+  border-radius: 999px;
+}
+
+.field-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 340px;
+  padding: 14px;
+  line-height: 1.55;
+  resize: vertical;
+  background: #fbfcfa;
+  border-radius: 6px;
+}
+
+.control-group,
+.control-grid {
+  margin: 16px 0 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.control-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 18px;
+}
+
+.control-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.control-grid label,
+.control-group label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+}
+
+.control-group label {
+  grid-auto-flow: column;
+  align-items: center;
+}
+
+.training-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.training-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.app-shell.is-demo-mode {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0;
+}
+
+.is-demo-mode .app-header,
+.is-demo-mode .input-panel,
+.is-demo-mode .training-panel > .panel-header,
+.is-demo-mode .training-actions {
+  display: none;
+}
+
+.is-demo-mode .workspace {
+  display: block;
+  min-height: 100vh;
+}
+
+.is-demo-mode .training-panel {
+  min-height: 100vh;
+  height: 100vh;
+  padding: 0;
+  background: var(--surface-muted);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@media (max-width: 860px) {
+  .app-shell {
+    padding: 14px;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .control-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,220 @@
+.training-preview {
+  flex: 1;
+  min-height: 520px;
+  padding: 22px;
+  overflow: auto;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: var(--surface-muted);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.demo-hint {
+  display: none;
+}
+
+.is-demo-mode .demo-hint {
+  position: fixed;
+  right: clamp(12px, 3vw, 28px);
+  bottom: clamp(12px, 3vw, 28px);
+  z-index: 20;
+  display: block;
+  padding: 8px 12px;
+  font-family: Arial, sans-serif;
+  font-size: 0.92rem;
+  line-height: 1;
+  color: #ffffff;
+  pointer-events: none;
+  background: rgba(20, 28, 36, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 6px;
+}
+
+.is-demo-mode .training-preview {
+  min-height: 100vh;
+  height: 100vh;
+  padding: clamp(54px, 8vh, 96px) clamp(22px, 7vw, 96px);
+  font-size: clamp(1.45rem, 2.8vw, 3rem);
+  background: var(--surface-muted);
+  border: 0;
+  border-radius: 0;
+}
+
+.training-preview:empty::before {
+  color: var(--muted);
+  content: "Введите текст слева, чтобы начать тренировку.";
+}
+
+.training-preview--rotating,
+.training-preview--mixed,
+.training-preview--plain {
+  letter-spacing: 0;
+}
+
+.rotating-letter,
+.mix-transform-letter {
+  display: inline-block;
+  min-width: 0.52em;
+  text-align: center;
+  transform-origin: 50% 55%;
+  will-change: transform;
+}
+
+.rotating-letter {
+  animation-name: rotate-letter;
+  animation-duration: var(--rotation-duration, 2s);
+  animation-timing-function: linear;
+  animation-delay: var(--rotation-delay, 0s);
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+
+.mix-transform-letter--rotate {
+  animation-name: rotate-letter;
+  animation-duration: var(--mix-duration, 2s);
+  animation-timing-function: linear;
+  animation-delay: var(--mix-delay, 0s);
+  animation-iteration-count: infinite;
+}
+
+.mix-transform-letter--morph {
+  animation-duration: var(--mix-duration, 2.6s);
+  animation-timing-function: steps(1, end);
+  animation-delay: var(--mix-delay, 0s);
+  animation-iteration-count: infinite;
+}
+
+.mix-transform-sequence-alpha {
+  animation-name: mix-transform-alpha;
+}
+
+.mix-transform-sequence-beta {
+  animation-name: mix-transform-beta;
+}
+
+.mix-transform-sequence-gamma {
+  animation-name: mix-transform-gamma;
+}
+
+.mix-transform-sequence-delta {
+  animation-name: mix-transform-delta;
+}
+
+.is-discrete .rotating-letter,
+.is-discrete .mix-transform-letter--rotate {
+  animation-timing-function: steps(8, end);
+}
+
+.is-paused .rotating-letter,
+.is-paused .mix-transform-letter {
+  animation-play-state: paused;
+}
+
+@keyframes rotate-letter {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(calc(var(--rotation-direction, 1) * 360deg));
+  }
+}
+
+@keyframes mix-transform-alpha {
+  0% {
+    transform: none;
+  }
+
+  25% {
+    transform: scaleX(-1);
+  }
+
+  50% {
+    transform: scaleY(-1);
+  }
+
+  75% {
+    transform: scale(-1, -1);
+  }
+
+  100% {
+    transform: scaleX(-1);
+  }
+}
+
+@keyframes mix-transform-beta {
+  0% {
+    transform: scaleY(-1);
+  }
+
+  25% {
+    transform: none;
+  }
+
+  50% {
+    transform: scale(-1, -1);
+  }
+
+  75% {
+    transform: scaleX(-1);
+  }
+
+  100% {
+    transform: none;
+  }
+}
+
+@keyframes mix-transform-gamma {
+  0% {
+    transform: scaleX(-1);
+  }
+
+  25% {
+    transform: scale(-1, -1);
+  }
+
+  50% {
+    transform: none;
+  }
+
+  75% {
+    transform: scaleY(-1);
+  }
+
+  100% {
+    transform: scale(-1, -1);
+  }
+}
+
+@keyframes mix-transform-delta {
+  0% {
+    transform: scale(-1, -1);
+  }
+
+  25% {
+    transform: scaleY(-1);
+  }
+
+  50% {
+    transform: scaleX(-1);
+  }
+
+  75% {
+    transform: none;
+  }
+
+  100% {
+    transform: scaleY(-1);
+  }
+}
+
+@media (max-width: 860px) {
+  .training-preview {
+    min-height: 360px;
+    padding: 16px;
+  }
+}

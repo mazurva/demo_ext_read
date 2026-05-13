@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Тренажер чтения и памяти</title>
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/training.css">
+  </head>
+  <body>
+    <main class="app-shell" data-app>
+      <header class="app-header">
+        <div>
+          <h1>Тренажер чтения и памяти</h1>
+          <p>Введите короткий текст и тренируйтесь читать его в усложненном виде.</p>
+        </div>
+      </header>
+
+      <section class="workspace" aria-label="Рабочая область">
+        <form class="input-panel" data-controls>
+          <div class="panel-header">
+            <h2>Исходный текст</h2>
+            <span class="counter" data-text-counter>0 символов</span>
+          </div>
+          <label class="field-label" for="source-text">Текст для тренировки</label>
+          <textarea
+            id="source-text"
+            data-source-text
+            rows="16"
+            spellcheck="true"
+            placeholder="Вставьте 3-4 абзаца прозы или стихов..."
+          ></textarea>
+
+          <fieldset class="control-group">
+            <legend>Режим</legend>
+            <label>
+              <input type="radio" name="mode" value="rotating-letters" checked data-mode>
+              Вращающиеся буквы
+            </label>
+            <label>
+              <input type="radio" name="mode" value="mix-transform" data-mode>
+              Микс-трансформ
+            </label>
+            <label>
+              <input type="radio" name="mode" value="shuffled-words" data-mode>
+              Перемешанные слова
+            </label>
+            <label>
+              <input type="radio" name="mode" value="shuffled-edges" data-mode>
+              Первая и последняя
+            </label>
+          </fieldset>
+
+          <fieldset class="control-grid">
+            <legend>Настройки</legend>
+            <label>
+              Тип вращения
+              <select data-rotation-type>
+                <option value="smooth">Плавное</option>
+                <option value="discrete">Дискретное</option>
+              </select>
+            </label>
+            <label>
+              Уровень
+              <input type="range" min="1" max="5" step="1" value="1" data-level>
+              <span data-level-value>1</span>
+            </label>
+            <label>
+              Скорость
+              <input type="range" min="0.5" max="3" step="0.1" value="1" data-speed>
+              <span data-speed-value>1.0</span>
+            </label>
+            <label>
+              Оригинал, сек.
+              <input type="number" min="1" max="10" step="1" value="3" data-reveal-duration>
+            </label>
+          </fieldset>
+        </form>
+
+        <section class="training-panel" aria-label="Тренировочный текст">
+          <div class="panel-header">
+            <h2>Тренировка</h2>
+            <span class="mode-badge" data-status>Вращение</span>
+          </div>
+          <div class="training-actions">
+            <button type="button" data-pause-toggle>Пауза</button>
+            <button type="button" data-show-original>Показать оригинал</button>
+            <button type="button" data-demo-toggle>Демо-режим</button>
+          </div>
+          <div class="demo-hint" aria-hidden="true">Esc - выйти</div>
+          <div
+            class="training-preview"
+            data-training-preview
+            aria-live="polite"
+            aria-label="Преобразованный текст"
+          ></div>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
